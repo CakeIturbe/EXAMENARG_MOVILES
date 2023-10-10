@@ -8,7 +8,7 @@
 
 import Foundation
 
-//https://pokeapi.co/api/v2/pokemon/limit=1279
-protocol PokemonAPIProtocol {
-    func getPokemonList(limit: Int) async -> Pokedex?
+//https://api.themoviedb.org/3/movie/popular/limit=
+protocol TMBDAPIProtocol {
+    func getMovieList(limit: Int) async -> Cartelera?
 }

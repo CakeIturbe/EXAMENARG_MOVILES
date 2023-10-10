@@ -18,6 +18,8 @@
 		E2C5AC382AD5C36400F7397E /* TMBDAPIProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C5AC372AD5C36400F7397E /* TMBDAPIProtocol.swift */; };
 		E2C5AC3A2AD5C39500F7397E /* NetworkAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C5AC392AD5C39500F7397E /* NetworkAPIService.swift */; };
 		E2C5AC3D2AD5C42800F7397E /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = E2C5AC3C2AD5C42700F7397E /* Alamofire */; };
+		E2C5AC3F2AD5C64400F7397E /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C5AC3E2AD5C64400F7397E /* File.swift */; };
+		E2C5AC422AD5C6BD00F7397E /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = E2C5AC412AD5C6BD00F7397E /* SDWebImageSwiftUI */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,7 @@
 		E2C5AC352AD5C33300F7397E /* TMBDRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBDRepository.swift; sourceTree = "<group>"; };
 		E2C5AC372AD5C36400F7397E /* TMBDAPIProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBDAPIProtocol.swift; sourceTree = "<group>"; };
 		E2C5AC392AD5C39500F7397E /* NetworkAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAPIService.swift; sourceTree = "<group>"; };
+		E2C5AC3E2AD5C64400F7397E /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2C5AC422AD5C6BD00F7397E /* SDWebImageSwiftUI in Frameworks */,
 				E2C5AC3D2AD5C42800F7397E /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -102,11 +106,10 @@
 		E2C5AC012AD5C01000F7397E /* MovieResume */ = {
 			isa = PBXGroup;
 			children = (
+				E2C5AC022AD5C01000F7397E /* MovieResumeApp.swift */,
 				E2C5AC322AD5C2E600F7397E /* Data */,
 				E2C5AC2F2AD5C26A00F7397E /* Presentation */,
-				E2C5AC022AD5C01000F7397E /* MovieResumeApp.swift */,
 				E2C5AC2D2AD5C1E400F7397E /* Domain */,
-				E2C5AC042AD5C01000F7397E /* ContentView.swift */,
 				E2C5AC062AD5C01600F7397E /* Assets.xcassets */,
 				E2C5AC082AD5C01600F7397E /* Preview Content */,
 			);
@@ -150,6 +153,7 @@
 		E2C5AC2E2AD5C1F800F7397E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				E2C5AC3E2AD5C64400F7397E /* File.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -166,6 +170,7 @@
 		E2C5AC302AD5C27A00F7397E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E2C5AC042AD5C01000F7397E /* ContentView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -221,6 +226,7 @@
 			name = MovieResume;
 			packageProductDependencies = (
 				E2C5AC3C2AD5C42700F7397E /* Alamofire */,
+				E2C5AC412AD5C6BD00F7397E /* SDWebImageSwiftUI */,
 			);
 			productName = MovieResume;
 			productReference = E2C5ABFF2AD5C01000F7397E /* MovieResume.app */;
@@ -296,6 +302,7 @@
 			mainGroup = E2C5ABF62AD5C01000F7397E;
 			packageReferences = (
 				E2C5AC3B2AD5C42700F7397E /* XCRemoteSwiftPackageReference "Alamofire" */,
+				E2C5AC402AD5C6BD00F7397E /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 			);
 			productRefGroup = E2C5AC002AD5C01000F7397E /* Products */;
 			projectDirPath = "";
@@ -340,6 +347,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E2C5AC3A2AD5C39500F7397E /* NetworkAPIService.swift in Sources */,
+				E2C5AC3F2AD5C64400F7397E /* File.swift in Sources */,
 				E2C5AC052AD5C01000F7397E /* ContentView.swift in Sources */,
 				E2C5AC032AD5C01000F7397E /* MovieResumeApp.swift in Sources */,
 				E2C5AC362AD5C33300F7397E /* TMBDRepository.swift in Sources */,
@@ -678,6 +686,14 @@
 				kind = branch;
 			};
 		};
+		E2C5AC402AD5C6BD00F7397E /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -685,6 +701,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E2C5AC3B2AD5C42700F7397E /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		E2C5AC412AD5C6BD00F7397E /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E2C5AC402AD5C6BD00F7397E /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

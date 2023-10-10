@@ -7,26 +7,26 @@
 import Foundation
 
 struct Api {
-    static let base = "https://pokeapi.co/api/v2/"
+    static let base = "https://api.themoviedb.org/3/"
     struct routes {
-        static let pokemon = "/pokemon"
+        static let movie = "/movie"
     }
 }
 
-class PokemonRepository: PokemonAPIProtocol {
+class TMBDRepository: TMBDAPIProtocol {
     let nservice: NetworkAPIService
 
     init(nservice: NetworkAPIService = NetworkAPIService.shared) {
         self.nservice = nservice
     }
 
-    func getPokemonList(limit: Int) async -> Pokedex? {
-        return await nservice.getPokedex(url: URL(string:"\(Api.base)\(Api.routes.pokemon)")!, limit: limit)
+    func getMovieList(limit: Int) async -> Cartelera? {
+        return await nservice.getCartelera(url: URL(string:"\(Api.base)\(Api.routes.movie)")!, limit: limit)
     }
     
-    func getPokemonInfo(numberPokemon: Int) async -> Perfil? {
+    func getMovieInfo(numberMovie: Int) async -> Perfil? {
        
-        return await nservice.getPokemonInfo(url: URL(string:"\(Api.base)\(Api.routes.pokemon)/\(numberPokemon)")!)
+        return await nservice.getMovieInfo(url: URL(string:"\(Api.base)\(Api.routes.movie)/\(numberMovie)")!)
         
     }
 }
