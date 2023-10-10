@@ -18,8 +18,11 @@
 		E2C5AC382AD5C36400F7397E /* TMBDAPIProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C5AC372AD5C36400F7397E /* TMBDAPIProtocol.swift */; };
 		E2C5AC3A2AD5C39500F7397E /* NetworkAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C5AC392AD5C39500F7397E /* NetworkAPIService.swift */; };
 		E2C5AC3D2AD5C42800F7397E /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = E2C5AC3C2AD5C42700F7397E /* Alamofire */; };
-		E2C5AC3F2AD5C64400F7397E /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C5AC3E2AD5C64400F7397E /* File.swift */; };
+		E2C5AC3F2AD5C64400F7397E /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C5AC3E2AD5C64400F7397E /* MovieModel.swift */; };
 		E2C5AC422AD5C6BD00F7397E /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = E2C5AC412AD5C6BD00F7397E /* SDWebImageSwiftUI */; };
+		E2C5AC442AD5DFB500F7397E /* MovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C5AC432AD5DFB500F7397E /* MovieViewModel.swift */; };
+		E2C5AC472AD5E05C00F7397E /* MovieUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C5AC462AD5E05C00F7397E /* MovieUseCase.swift */; };
+		E2C5AC492AD5EBC100F7397E /* PaginatedQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2C5AC482AD5EBC100F7397E /* PaginatedQuery.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,7 +56,10 @@
 		E2C5AC352AD5C33300F7397E /* TMBDRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBDRepository.swift; sourceTree = "<group>"; };
 		E2C5AC372AD5C36400F7397E /* TMBDAPIProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMBDAPIProtocol.swift; sourceTree = "<group>"; };
 		E2C5AC392AD5C39500F7397E /* NetworkAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAPIService.swift; sourceTree = "<group>"; };
-		E2C5AC3E2AD5C64400F7397E /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		E2C5AC3E2AD5C64400F7397E /* MovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
+		E2C5AC432AD5DFB500F7397E /* MovieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewModel.swift; sourceTree = "<group>"; };
+		E2C5AC462AD5E05C00F7397E /* MovieUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieUseCase.swift; sourceTree = "<group>"; };
+		E2C5AC482AD5EBC100F7397E /* PaginatedQuery.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaginatedQuery.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +150,7 @@
 		E2C5AC2D2AD5C1E400F7397E /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				E2C5AC452AD5E01700F7397E /* UseCase */,
 				E2C5AC2E2AD5C1F800F7397E /* Models */,
 			);
 			name = Domain;
@@ -153,7 +160,7 @@
 		E2C5AC2E2AD5C1F800F7397E /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				E2C5AC3E2AD5C64400F7397E /* File.swift */,
+				E2C5AC3E2AD5C64400F7397E /* MovieModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -178,6 +185,7 @@
 		E2C5AC312AD5C28400F7397E /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				E2C5AC432AD5DFB500F7397E /* MovieViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -185,6 +193,7 @@
 		E2C5AC322AD5C2E600F7397E /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				E2C5AC482AD5EBC100F7397E /* PaginatedQuery.swift */,
 				E2C5AC342AD5C2F600F7397E /* Repository */,
 				E2C5AC332AD5C2EE00F7397E /* Remote */,
 			);
@@ -206,6 +215,14 @@
 				E2C5AC352AD5C33300F7397E /* TMBDRepository.swift */,
 			);
 			path = Repository;
+			sourceTree = "<group>";
+		};
+		E2C5AC452AD5E01700F7397E /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				E2C5AC462AD5E05C00F7397E /* MovieUseCase.swift */,
+			);
+			path = UseCase;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -346,11 +363,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2C5AC492AD5EBC100F7397E /* PaginatedQuery.swift in Sources */,
 				E2C5AC3A2AD5C39500F7397E /* NetworkAPIService.swift in Sources */,
-				E2C5AC3F2AD5C64400F7397E /* File.swift in Sources */,
+				E2C5AC3F2AD5C64400F7397E /* MovieModel.swift in Sources */,
 				E2C5AC052AD5C01000F7397E /* ContentView.swift in Sources */,
 				E2C5AC032AD5C01000F7397E /* MovieResumeApp.swift in Sources */,
 				E2C5AC362AD5C33300F7397E /* TMBDRepository.swift in Sources */,
+				E2C5AC442AD5DFB500F7397E /* MovieViewModel.swift in Sources */,
+				E2C5AC472AD5E05C00F7397E /* MovieUseCase.swift in Sources */,
 				E2C5AC382AD5C36400F7397E /* TMBDAPIProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

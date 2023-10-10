@@ -7,18 +7,29 @@
 
 import Foundation
 
-import Foundation
-
 struct Cartelera: Codable {
     var count: Int
     var results: [Movie]
 }
 
-struct Movie: Codable {
-    var name: String
-    var url: String
-}
+struct Movie : Codable, Identifiable {
+    var adult : Bool
+    var backdrop_path : String
+    var genre_ids : [String]
+    var id : UUID
+    var original_language : String
+    var original_title : String
+    var overview : String
+    var popularity : Double
+    var poster_path : String
+    var release_date : String
+    var title : String
+    var video : Bool
+    var vote_average : Int
+    var vote_count : Int
 
+}
+/*
 struct Perfil: Codable {
     var sprites: Sprite
 }
@@ -33,14 +44,15 @@ struct MovieBase: Identifiable {
     var movie: Movie
     var perfil: Perfil?
 }
-
-
+*/
+/*
 protocol NetworkAPIProtocol {
     // https://pokeapi.co/api/v2/pokemon/limit=1279
-    func getPokemonList(limit: Int) async -> Cartelera?
+    func getMovieList(limit: Int) async -> Cartelera?
     // https://pokeapi.co/api/v2/pokemon/{number_pokemon}/
-    func getPokemonInfo(numberPokemon:Int) async -> Perfil?
+    func getMovieInfo(numberMovie:Int) async -> Movie?
 }
 
+*/
 
 

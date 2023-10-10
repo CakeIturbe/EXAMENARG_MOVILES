@@ -8,7 +8,7 @@
 
 import Foundation
 
-//https://api.themoviedb.org/3/movie/popular/limit=
+//https://api.themoviedb.org/3/movie/popular/
 protocol TMBDAPIProtocol {
-    func getMovieList(limit: Int) async -> Cartelera?
+    func getAllMovies() async -> PaginatedQuery<Movie>??
 }

@@ -8,37 +8,56 @@
 import SwiftUI
 import SDWebImageSwiftUI
 
-struct ContentView: View {
-    @State var movieList = [MovieBase]()
+struct CardCarteleraView: View {
+    @StateObject var viewModel: MovieViewModel
+    var movieId: UUID
+    var movieName: String
+    var votos: Int
+    var fecha_estreno: String
+    
+    init(movieId: UUID, movieName: String, votos: Int, fecha_estreno: String) {
+        _viewModel = StateObject(wrappedValue: MovieViewModel())
+        
+        self.movieId = movieId
+        self.movieName = movieName
+        self.votos = votos
+        self.fecha_estreno = fecha_estreno
+    }
+    
     var body: some View {
-        List(movieList) { movieBase in
+        
+        ZStack {
+            RoundedRectangle(cornerRadius: 10, style:.continuous)
+                .fill(.white)
+                .frame(width: 335, height: 150)
+                .shadow(color: Color("BlueCustom"), radius: 1)
             HStack {
-                WebImage(url: URL(string: movieBase.perfil?.sprites.front_default ?? ""))
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 48, height: 48, alignment: .center)
-                Text(movieBase.movie.name)
+                Text(movieName)
             }
-        }.onAppear {
-            Task {
-                await getMovieList()
-            }
+            .navigationTitle("CARTELErA")
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
+}
 
-    func getMovieList() async {
-        let movieRepository = TMBDRepository()
-        let result = await movieRepository.getMovieList(limit: 15)
-        
-        var tempMovieList = [MovieBase]()
-        for movie in result!.results {
-            let numberMovie = Int(movie.url.split(separator: "/")[5])!
-            
-            let infoMovie = await movieRepository.getMovieInfo(numberMovie: Int(String(numberMovie))!)
-            let tempMovie = MovieBase(id: Int(String(numberMovie))!, movie: movie, perfil: infoMovie)
-            tempMovieList.append(tempMovie)
+struct ContentView: View {
+    @StateObject var viewModel = MovieViewModel()
+    var body: some View {
+        NavigationStack {
+            ScrollView {
+                LazyVStack{
+                    ForEach(viewModel.movies, id: \.id) { movie in
+                        CardCarteleraView(movieId: movie.id,
+                                          movieName: movie.title, votos: movie.vote_average, fecha_estreno: movie.release_date)
+                    }.padding(.top, 5)
+                }.padding(.top, 10)
+            }.onAppear {
+                Task {
+                    await viewModel.fetchAllMovies()
+                }
+            }
         }
-        movieList = tempMovieList
+        
     }
 }
 

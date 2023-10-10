@@ -10,22 +10,21 @@ import Alamofire
 
 class NetworkAPIService {
     static let shared = NetworkAPIService()
-    func getCartelera(url: URL, limit: Int) async -> Cartelera? {
-        let parameters : Parameters = [
-            "limit" : limit
-        ]
-        let headers: HTTPHeaders = [
-          "accept": "application/json",
-          "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmZjhkZDc1NmUzMmI4YWNlZjYyZmQ2YzMwZmQwY2NmOSIsInN1YiI6IjY0ZWI5MzhiZTg5NGE2MDEzYmIxNjNjZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.6cGDTI8wql15qnVZErrd_6QRNaiRAi74pRD0LfOzVZM"
-        ]
+    func getCartelera<T: Codable>(url: URL) async -> T? {
 
-        let taskRequest = AF.request(url, method: .get, parameters: parameters, headers: headers ).validate()
+        //En headers añadimos nuestra API KEY y lo definimos a el tipo de dato HTTPHeaders
+        let headers: HTTPHeaders = [
+            "accept": "application/json",
+            "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmZjhkZDc1NmUzMmI4YWNlZjYyZmQ2YzMwZmQwY2NmOSIsInN1YiI6IjY0ZWI5MzhiZTg5NGE2MDEzYmIxNjNjZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.6cGDTI8wql15qnVZErrd_6QRNaiRAi74pRD0LfOzVZM"
+        ]
+        //Definimos nuestra request añadiendo
+        let taskRequest = AF.request(url, method: .get, headers: headers ).validate()
         let response = await taskRequest.serializingData().response
 
         switch response.result {
         case .success(let data):
             do {
-                return try JSONDecoder().decode(Cartelera.self, from: data)
+                return try JSONDecoder().decode(T.self, from: data)
             } catch {
                 return nil
             }
@@ -35,6 +34,7 @@ class NetworkAPIService {
         }
         
     }
+    /*
     func getMovieInfo(url: URL) async -> Perfil? {
         let taskRequest = AF.request(url, method: .get).validate()
         let response = await taskRequest.serializingData().response
@@ -51,6 +51,7 @@ class NetworkAPIService {
             return nil
         }
     }
+     */
 
 }
 

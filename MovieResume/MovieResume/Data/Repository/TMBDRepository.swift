@@ -7,26 +7,29 @@
 import Foundation
 
 struct Api {
-    static let base = "https://api.themoviedb.org/3/"
+    static let base = "https://api.themoviedb.org/3/movie"
     struct routes {
-        static let movie = "/movie"
+        static let movie = "/popular/"
     }
 }
 
-class TMBDRepository: TMBDAPIProtocol {
-    let nservice: NetworkAPIService
 
+class TMBDRepository {
+    let nservice: NetworkAPIService
+    static let shared = TMBDRepository()
+    
     init(nservice: NetworkAPIService = NetworkAPIService.shared) {
         self.nservice = nservice
     }
 
-    func getMovieList(limit: Int) async -> Cartelera? {
-        return await nservice.getCartelera(url: URL(string:"\(Api.base)\(Api.routes.movie)")!, limit: limit)
+    func getAllMovies() async -> PaginatedQuery<Movie>? {
+        return await nservice.getCartelera(url: URL(string:"\(Api.base)\(Api.routes.movie)")!)
     }
-    
-    func getMovieInfo(numberMovie: Int) async -> Perfil? {
+    /*
+    func getMovieInfo(numberMovie: Int) async -> Movie? {
        
         return await nservice.getMovieInfo(url: URL(string:"\(Api.base)\(Api.routes.movie)/\(numberMovie)")!)
         
     }
+     */
 }
